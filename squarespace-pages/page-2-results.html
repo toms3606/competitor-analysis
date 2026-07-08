@@ -47,7 +47,7 @@
 
     /* ---------- SEO score comparison ---------- */
     #cmp-root .cmp-score-rows { margin-top: 8px; }
-    #cmp-root .cmp-score-row { display: grid; grid-template-columns: 180px 1fr 50px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--cmp-rule-soft); }
+    #cmp-root .cmp-score-row { display: grid; grid-template-columns: 230px 1fr 50px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--cmp-rule-soft); }
     #cmp-root .cmp-score-row:last-child { border-bottom: 0; }
     #cmp-root .cmp-score-row-brand { background: var(--cmp-teal-tint); border-radius: 6px; padding: 12px; }
     #cmp-root .cmp-score-row-label { font-size: 14px; font-weight: 600; color: var(--cmp-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -107,6 +107,23 @@
     #cmp-root .cmp-cta-btn { display: inline-block; flex-shrink: 0; background: var(--cmp-teal-dark); color: #fff; padding: 16px 28px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; }
     #cmp-root .cmp-cta-btn:hover { background: var(--cmp-teal); }
 
+    /* ---------- PDF download link ---------- */
+    #cmp-root .cmp-pdf {
+      max-width: 880px;
+      margin: 0 auto 40px;
+      padding: 0 56px;
+      text-align: right;
+    }
+    #cmp-root .cmp-pdf a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cmp-ink-mute);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    #cmp-root .cmp-pdf a:hover { color: var(--cmp-teal); }
+
     /* ---------- Loading / error ---------- */
     #cmp-root .cmp-loading, #cmp-root .cmp-error { text-align: center; padding: 60px 20px; color: var(--cmp-ink-soft); font-size: 16px; }
     #cmp-root .cmp-error strong { color: #c44b3a; }
@@ -114,7 +131,7 @@
     /* ---------- Mobile ---------- */
     @media (max-width: 720px) {
       #cmp-root .report-header, #cmp-root .report-banner, #cmp-root .cmp-section,
-      #cmp-root .cmp-banner-row, #cmp-root .cmp-card {
+      #cmp-root .cmp-banner-row, #cmp-root .cmp-card, #cmp-root .cmp-pdf {
         padding-left: 28px; padding-right: 28px;
       }
       #cmp-root .report-subject { font-size: 30px; }
@@ -132,5 +149,5 @@
   </div>
 
   <!-- Update this src once results-page.js is deployed to your Vercel project -->
-  <script src="https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app/results-page.js"></script>
+  <script src="https://competitor-analysis-westwardmarketinglab.vercel.app/results-page.js"></script>
 </div>

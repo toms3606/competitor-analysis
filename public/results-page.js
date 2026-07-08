@@ -237,6 +237,8 @@
         '<a class="cmp-cta-btn" href="' + esc(calendarUrl) + '">Contact the Lab</a>' +
         "</div>"
       ) +
+
+      '<div class="cmp-pdf"><a href="' + API_BASE + '/api/pdf/' + encodeURIComponent(data.id) + '" target="_blank">&#8595; Download PDF report</a></div>' +
       "</div>";
 
     mount.innerHTML = html;
