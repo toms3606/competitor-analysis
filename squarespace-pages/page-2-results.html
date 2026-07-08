@@ -1,0 +1,136 @@
+<!-- ===================================================================
+     Westward Marketing Lab — Competitor Audit — Results Page
+     Paste into a Squarespace Code Block on the results page.
+     =================================================================== -->
+<div id="cmp-root">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+    #cmp-root {
+      --cmp-teal: #055671;
+      --cmp-teal-dark: #044556;
+      --cmp-teal-tint: hsla(180,89%,38%,0.05);
+      --cmp-teal-border: rgba(0,88,102,0.4);
+      --cmp-ink: #1a2a30;
+      --cmp-ink-soft: #4a5a60;
+      --cmp-ink-mute: #7a8a90;
+      --cmp-paper: #fff;
+      --cmp-paper-soft: #f7f9fa;
+      --cmp-rule: rgba(0,88,102,0.15);
+      --cmp-rule-soft: rgba(0,88,102,0.08);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cmp-paper-soft);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    #cmp-root * { box-sizing: border-box; }
+
+    #cmp-root .report-page { max-width: 880px; margin: 0 auto; background: var(--cmp-paper); padding-bottom: 20px; }
+    #cmp-root .report-header { padding: 48px 56px 36px; border-bottom: 1px solid var(--cmp-rule); }
+    #cmp-root .report-title { font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--cmp-teal); margin-bottom: 16px; }
+    #cmp-root .report-subject { font-size: 44px; font-weight: 600; color: var(--cmp-ink); line-height: 1.1; word-break: break-word; }
+    #cmp-root .report-banner, #cmp-root .cmp-banner-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 56px; background: var(--cmp-rule-soft);
+      border-top: 1px solid var(--cmp-rule-soft); border-bottom: 1px solid var(--cmp-rule-soft);
+      max-width: 880px; margin: 0 auto;
+    }
+    #cmp-root .report-banner-left, #cmp-root .cmp-banner-left { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--cmp-ink-mute); }
+    #cmp-root .report-banner-right, #cmp-root .cmp-banner-right { font-family: 'DM Mono', monospace; letter-spacing: .10em; font-size: 9.5px; white-space: nowrap; color: var(--cmp-ink-mute); }
+
+    #cmp-root .cmp-section { padding: 52px 56px 40px; background: var(--cmp-paper); }
+    #cmp-root .cmp-card { max-width: 880px; margin: 0 auto 28px; background: var(--cmp-paper); padding: 44px 56px; }
+    #cmp-root .cmp-section-label, #cmp-root .cmp-card-title {
+      font-size: 15px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cmp-ink); margin-bottom: 16px;
+    }
+    #cmp-root .cmp-section-intro { font-size: 14px; color: var(--cmp-ink-soft); line-height: 1.6; max-width: 680px; margin: 0 0 24px 0; }
+
+    /* ---------- SEO score comparison ---------- */
+    #cmp-root .cmp-score-rows { margin-top: 8px; }
+    #cmp-root .cmp-score-row { display: grid; grid-template-columns: 180px 1fr 50px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--cmp-rule-soft); }
+    #cmp-root .cmp-score-row:last-child { border-bottom: 0; }
+    #cmp-root .cmp-score-row-brand { background: var(--cmp-teal-tint); border-radius: 6px; padding: 12px; }
+    #cmp-root .cmp-score-row-label { font-size: 14px; font-weight: 600; color: var(--cmp-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #cmp-root .cmp-score-row-track { height: 10px; background: rgba(0,88,102,0.10); border-radius: 5px; overflow: hidden; }
+    #cmp-root .cmp-score-row-fill { height: 100%; border-radius: 5px; }
+    #cmp-root .cmp-score-row-value { font-family: 'DM Mono', monospace; font-size: 15px; font-weight: 600; text-align: right; }
+    #cmp-root .cmp-score-row-error { grid-column: 2 / 4; font-size: 13px; color: #c44b3a; font-style: italic; }
+
+    /* ---------- Comparative dimension accordion ---------- */
+    #cmp-root .cmp-dims { margin-top: 8px; }
+    #cmp-root details.cmp-dim-row { border-bottom: 1px solid var(--cmp-rule-soft); }
+    #cmp-root details.cmp-dim-row:last-child { border-bottom: 0; }
+    #cmp-root .cmp-dim-summary {
+      display: grid; grid-template-columns: 1fr 90px 20px; gap: 16px; align-items: center;
+      padding: 18px 0; cursor: pointer; list-style: none; outline: none;
+    }
+    #cmp-root .cmp-dim-summary::-webkit-details-marker { display: none; }
+    #cmp-root .cmp-dim-summary::marker { display: none; }
+    #cmp-root .cmp-dim-label { font-size: 15px; color: var(--cmp-ink); font-weight: 500; }
+    #cmp-root .cmp-dim-position {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      font-weight: 500; padding: 5px 10px; border-radius: 3px; text-align: center;
+    }
+    #cmp-root .cmp-dim-chevron { color: var(--cmp-teal); font-size: 14px; text-align: right; transition: transform 0.15s ease; }
+    #cmp-root details.cmp-dim-row[open] .cmp-dim-chevron { transform: rotate(90deg); }
+    #cmp-root .cmp-dim-detail { padding: 0 0 22px 0; }
+    #cmp-root .cmp-dim-brand, #cmp-root .cmp-dim-competitor { font-size: 13.5px; color: var(--cmp-ink-soft); line-height: 1.6; margin-bottom: 10px; padding-left: 14px; border-left: 2px solid var(--cmp-rule); }
+    #cmp-root .cmp-dim-brand { border-left-color: var(--cmp-teal); }
+    #cmp-root .cmp-dim-who { display: block; font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cmp-ink-mute); margin-bottom: 4px; }
+    #cmp-root .cmp-dim-brand .cmp-dim-who { color: var(--cmp-teal); }
+
+    /* ---------- SWOT grid ---------- */
+    #cmp-root .cmp-swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    #cmp-root .cmp-swot-card { background: var(--cmp-paper-soft); border-left: 3px solid; padding: 20px 22px; border-radius: 0 8px 8px 0; }
+    #cmp-root .cmp-swot-title { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    #cmp-root .cmp-swot-list { margin: 0; padding-left: 18px; }
+    #cmp-root .cmp-swot-list li { font-size: 13.5px; color: var(--cmp-ink-soft); line-height: 1.6; margin-bottom: 8px; }
+
+    /* ---------- Biome tie-in (Environment molecule) ---------- */
+    #cmp-root .cmp-biome-intro { font-size: 14px; color: var(--cmp-ink-soft); line-height: 1.6; max-width: 620px; margin: 0 0 24px 0; }
+    #cmp-root .diagram { display: flex; justify-content: center; }
+    #cmp-root .exec-mol { width: 100%; max-width: 560px; height: auto; display: block; }
+    #cmp-root .exec-mol-bond { stroke: var(--cmp-teal); stroke-width: 1; opacity: 0.5; }
+    #cmp-root .exec-mol-core-shape { fill: #2d7a4f; stroke: #1f5c3a; stroke-width: 1.5; }
+    #cmp-root .exec-mol-core-num { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; fill: #fff; opacity: 0.85; }
+    #cmp-root .exec-mol-core-label { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; fill: #fff; }
+    #cmp-root .exec-mol-sub-shape { fill: #fff; stroke: var(--cmp-teal); stroke-width: 1; }
+    #cmp-root .exec-mol-sub-highlight .exec-mol-sub-shape { fill: #e1f5ee; stroke-width: 1.5; }
+    #cmp-root .exec-mol-sub-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.03em; fill: #044556; }
+
+    /* ---------- CTA ---------- */
+    #cmp-root .cmp-cta { display: flex; justify-content: space-between; align-items: center; gap: 32px; background: var(--cmp-teal-tint); border: 1px solid var(--cmp-teal-border); border-radius: 16px; padding: 32px 40px; text-align: left; }
+    #cmp-root .cmp-cta-content { flex: 1; }
+    #cmp-root .cmp-cta-tag { font-size: 11px; font-weight: 600; letter-spacing: .20em; text-transform: uppercase; color: var(--cmp-teal-dark); margin-bottom: 12px; }
+    #cmp-root .cmp-cta-headline { font-size: 26px; font-weight: 700; color: var(--cmp-ink); line-height: 1.3; margin-bottom: 12px; max-width: 560px; }
+    #cmp-root .cmp-cta-body { font-size: 15px; color: var(--cmp-ink-soft); max-width: 520px; margin: 0; line-height: 1.6; }
+    #cmp-root .cmp-cta-btn { display: inline-block; flex-shrink: 0; background: var(--cmp-teal-dark); color: #fff; padding: 16px 28px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; }
+    #cmp-root .cmp-cta-btn:hover { background: var(--cmp-teal); }
+
+    /* ---------- Loading / error ---------- */
+    #cmp-root .cmp-loading, #cmp-root .cmp-error { text-align: center; padding: 60px 20px; color: var(--cmp-ink-soft); font-size: 16px; }
+    #cmp-root .cmp-error strong { color: #c44b3a; }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 720px) {
+      #cmp-root .report-header, #cmp-root .report-banner, #cmp-root .cmp-section,
+      #cmp-root .cmp-banner-row, #cmp-root .cmp-card {
+        padding-left: 28px; padding-right: 28px;
+      }
+      #cmp-root .report-subject { font-size: 30px; }
+      #cmp-root .cmp-score-row { grid-template-columns: 1fr; gap: 6px; }
+      #cmp-root .cmp-score-row-value { text-align: left; }
+      #cmp-root .cmp-dim-summary { grid-template-columns: 1fr 70px 20px; }
+      #cmp-root .cmp-swot-grid { grid-template-columns: 1fr; }
+      #cmp-root .cmp-cta { flex-direction: column; align-items: flex-start; }
+      #cmp-root .cmp-cta-btn { width: 100%; text-align: center; }
+    }
+  </style>
+
+  <div id="cmp-mount">
+    <div class="cmp-loading">Loading your results&hellip;</div>
+  </div>
+
+  <!-- Update this src once results-page.js is deployed to your Vercel project -->
+  <script src="https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app/results-page.js"></script>
+</div>

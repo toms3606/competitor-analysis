@@ -1,0 +1,177 @@
+<!-- ===================================================================
+     Westward Marketing Lab — Competitor Audit — Input Page
+     Matches the GEO/SEO Audit card style exactly: bordered card,
+     teal-tint eyebrow bar, icon, dark teal tool-name bar, plain inputs,
+     pill-shaped button.
+     Paste into a Squarespace Code Block on the audit landing page.
+     CONFIG: set API_BASE and RESULTS_PAGE_URL before publishing.
+
+     NOTE: eyebrow reads "02 ENVIRONMENT" rather than "04 EXECUTION" —
+     this tool audits Environment's Competitors domain, not an
+     Execution channel like GEO/SEO Audit do. Change if you intended
+     something else.
+     =================================================================== -->
+<style>
+  #comp-form input[type="text"]:focus { border-color: #055671; }
+  #comp-submit-btn:hover:not(:disabled) { background-color: #044556; }
+  #comp-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  #comp-status.comp-error { color: #c44b3a; }
+  .comp-hp {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+</style>
+<div id="competitor-audit-test-code" style="border: 1px solid; border-color: rgba(0, 88, 102, 1); border-radius: 10px; overflow: hidden; background-color: #ffffff; margin: 0 auto; height: 100%">
+    <div style="text-align: center; font-weight: normal; font-size: 14px; padding-top: 10px; padding-bottom: 5px; color: rgba(0, 88, 102, 1); background-color: hsla(180, 89%, 38%, 0.05);">
+        02 ENVIRONMENT
+    </div>
+    <table width="100%" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <td style="text-align: center; padding: 10px;">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5f286fed62f0142a22175492/718f5957-f1be-4175-ac85-c291351c6c98/white-label-brain-in-vacuum-tube-image.png?format=100w" alt="Competitor Audit Test Icon" style="max-width: 80px; height: auto; margin-top: 10px; border-radius: 10px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: #055671; color: white; text-align: center; padding-top: 10px; padding-bottom: 10px">
+                    <strong style="font-size: 18px;">Competitor Audit</strong>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 20px 20px;">
+                    <form id="comp-form" autocomplete="off" style="margin: 0;">
+                        <input
+                            type="text"
+                            name="brandUrl"
+                            id="comp-brand-url"
+                            placeholder="Your Website URL"
+                            required
+                            autocomplete="url"
+                            style="width: 100%; padding: 10px 14px; border: 1px solid rgba(0, 88, 102, 0.4); font: inherit; font-size: 15px; border-radius: 5px; outline: none; box-sizing: border-box; margin-bottom: 12px; transition: border-color .15s ease;"
+                        />
+                        <input
+                            type="text"
+                            name="competitor1"
+                            id="comp-competitor-1"
+                            placeholder="Competitor 1 URL"
+                            autocomplete="off"
+                            style="width: 100%; padding: 10px 14px; border: 1px solid rgba(0, 88, 102, 0.4); font: inherit; font-size: 15px; border-radius: 5px; outline: none; box-sizing: border-box; margin-bottom: 12px; transition: border-color .15s ease;"
+                        />
+                        <input
+                            type="text"
+                            name="competitor2"
+                            id="comp-competitor-2"
+                            placeholder="Competitor 2 URL (optional)"
+                            autocomplete="off"
+                            style="width: 100%; padding: 10px 14px; border: 1px solid rgba(0, 88, 102, 0.4); font: inherit; font-size: 15px; border-radius: 5px; outline: none; box-sizing: border-box; margin-bottom: 12px; transition: border-color .15s ease;"
+                        />
+                        <input
+                            type="text"
+                            name="competitor3"
+                            id="comp-competitor-3"
+                            placeholder="Competitor 3 URL (optional)"
+                            autocomplete="off"
+                            style="width: 100%; padding: 10px 14px; border: 1px solid rgba(0, 88, 102, 0.4); font: inherit; font-size: 15px; border-radius: 5px; outline: none; box-sizing: border-box; margin-bottom: 4px; transition: border-color .15s ease;"
+                        />
+                        <div style="font-size: 12px; color: #888; margin-bottom: 12px;">We'll compare your site against each of these across positioning, content, AI visibility, social proof, pricing, and brand voice &mdash; plus a full SWOT summary.</div>
+                        <input
+                            type="text"
+                            name="company-name"
+                            class="comp-hp"
+                            tabindex="-1"
+                            autocomplete="off"
+                            aria-hidden="true"
+                        />
+                        <div style="text-align: center;">
+                            <button
+                                type="submit"
+                                id="comp-submit-btn"
+                                style="display: inline-block; padding: 8px 40px; background-color: #055671; color: white; text-decoration: none; border-radius: 5px; border: 0; font: inherit; font-weight: bold; cursor: pointer; transition: background-color .15s ease;"
+                            >
+                                Run My Competitor Audit
+                            </button>
+                        </div>
+                        <div id="comp-status" style="text-align: center; font-size: 13px; color: #666; min-height: 18px; margin-top: 10px;"></div>
+                    </form>
+                </td>
+            </tr>
+            <tr><td style="height: 10px"></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+  (function () {
+    var API_BASE = "https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app";
+    var RESULTS_PAGE_URL = "https://westwardmarketinglab.com/competitor-analysis-results"; // must match your Page 2 URL
+
+    var form = document.getElementById("comp-form");
+    var brandInput = document.getElementById("comp-brand-url");
+    var c1 = document.getElementById("comp-competitor-1");
+    var c2 = document.getElementById("comp-competitor-2");
+    var c3 = document.getElementById("comp-competitor-3");
+    var hpInput = form.querySelector('input[name="company-name"]');
+    var submitBtn = document.getElementById("comp-submit-btn");
+    var statusEl = document.getElementById("comp-status");
+
+    function setStatus(msg, isError) {
+      statusEl.textContent = msg || "";
+      statusEl.classList.toggle("comp-error", !!isError);
+    }
+
+    function runAudit(e) {
+      if (e) e.preventDefault();
+
+      // Honeypot check — if a bot filled this hidden field, silently
+      // drop the submission rather than telling the bot it failed.
+      if (hpInput && hpInput.value) return;
+
+      var brandUrl = brandInput.value.trim();
+      var competitorUrls = [c1.value, c2.value, c3.value]
+        .map(function (v) { return v.trim(); })
+        .filter(Boolean);
+
+      if (!brandUrl) {
+        setStatus("Enter your website URL to get started.", true);
+        brandInput.focus();
+        return;
+      }
+      if (competitorUrls.length === 0) {
+        setStatus("Enter at least 1 competitor URL.", true);
+        c1.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      setStatus("Running the comparison — this reads every site closely, so it can take a minute or two…");
+
+      fetch(API_BASE + "/api/audit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ brandUrl: brandUrl, competitorUrls: competitorUrls }),
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            if (!res.ok) throw new Error(data.error || "Something went wrong.");
+            return data;
+          });
+        })
+        .then(function (data) {
+          setStatus("Done! Redirecting to your results…");
+          window.location.href = RESULTS_PAGE_URL + "?auditId=" + encodeURIComponent(data.auditId);
+        })
+        .catch(function (err) {
+          submitBtn.disabled = false;
+          setStatus(err.message || "Something went wrong. Please try again.", true);
+        });
+    }
+
+    form.addEventListener("submit", runAudit);
+  })();
+</script>

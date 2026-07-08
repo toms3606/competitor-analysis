@@ -1,4 +1,4 @@
-# Competitor Analysis — Phase 1: Core Comparison Engine
+# Competitor Audit — Phase 1: Core Comparison Engine
 
 A genuine competitive analysis tool — brand vs. up to 3 named
 competitors, structured comparison table plus a narrative SWOT
