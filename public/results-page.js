@@ -6,7 +6,7 @@
    CONFIG: update API_BASE once this repo is deployed to Vercel.
    =================================================================== */
 (function () {
-  var API_BASE = "https://competitor-analysis-westwardmarketinglab.vercel.app";
+  var API_BASE = "https://competitor-analysis-westwardmarketinglab.vercel.app"; 
   var MOUNT_ID = "cmp-mount";
 
   var POSITION_COLORS = {
